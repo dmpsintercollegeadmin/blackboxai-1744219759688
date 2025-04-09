@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>School Messaging</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+  <div class="min-h-screen flex">
+    <!-- Sidebar -->
+    <div class="w-64 bg-indigo-800 text-white p-4">
+      <h1 class="text-2xl font-bold mb-8">School Portal</h1>
+      <nav>
+        <ul class="space-y-2">
+          <li>
+            <a href="/parent-dashboard.html" class="flex items-center p-2 rounded hover:bg-indigo-700">
+              <i class="fas fa-arrow-left mr-2"></i> Back to Dashboard
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 p-8">
+      <div class="flex justify-between items-center mb-8">
+        <h2 class="text-3xl font-bold text-gray-800">Messages</h2>
+        <button id="new-message-btn" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">
+          <i class="fas fa-plus mr-2"></i> New Message
+        </button>
+      </div>
+
+      <!-- Message List -->
+      <div class="bg-white rounded-lg shadow overflow-hidden mb-8">
+        <div class="border-b p-4 bg-gray-50">
+          <h3 class="font-semibold">Inbox</h3>
+        </div>
+        <div id="message-list" class="divide-y">
+          <!-- Messages will be loaded here -->
+        </div>
+      </div>
+
+      <!-- Message View -->
+      <div id="message-view" class="bg-white rounded-lg shadow p-6 hidden">
+        <div class="flex justify-between items-start mb-4">
+          <div>
+            <h3 id="message-subject" class="text-xl font-semibold"></h3>
+            <div id="message-sender" class="text-gray-600 mt-1"></div>
+          </div>
+          <div id="message-date" class="text-gray-500"></div>
+        </div>
+        <div id="message-content" class="prose max-w-none"></div>
+        <div id="message-attachments" class="mt-6"></div>
+        <div class="mt-6 pt-4 border-t">
+          <button id="reply-btn" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 mr-2">
+            <i class="fas fa-reply mr-2"></i> Reply
+          </button>
+          <button id="back-btn" class="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-300">
+            <i class="fas fa-arrow-left mr-2"></i> Back
+          </button>
+        </div>
+      </div>
+
+      <!-- New Message Form -->
+      <div id="new-message-form" class="bg-white rounded-lg shadow p-6 hidden">
+        <h3 class="text-xl font-semibold mb-4">New Message</h3>
+        <form id="message-form">
+          <div class="mb-4">
+            <label class="block text-gray-700 mb-2">Recipients</label>
+            <select id="recipients" multiple class="w-full border rounded-lg p-2">
+              <!-- Recipients will be loaded here -->
+            </select>
+          </div>
+          <div class="mb-4">
+            <label class="block text-gray-700 mb-2">Subject</label>
+            <input type="text" id="subject" class="w-full border rounded-lg p-2" required>
+          </div>
+          <div class="mb-4">
+            <label class="block text-gray-700 mb-2">Message</label>
+            <textarea id="content" rows="5" class="w-full border rounded-lg p-2" required></textarea>
+          </div>
+          <div class="mb-4">
+            <label class="block text-gray-700 mb-2">Attachments</label>
+            <input type="file" id="attachments" multiple accept=".pdf,.jpg,.jpeg,.png" class="w-full border rounded-lg p-2">
+          </div>
+          <div class="flex justify-end">
+            <button type="button" id="cancel-btn" class="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-300 mr-2">
+              Cancel
+            </button>
+            <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">
+              <i class="fas fa-paper-plane mr-2"></i> Send
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/messages.js"></script>
+</body>
+</html>
